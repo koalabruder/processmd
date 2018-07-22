@@ -144,6 +144,18 @@ function processYamlAndMarkdown (file, options, cb) {
       })
     }
 
+////////////////////////////////    
+    if(true) {
+      jsonData.sourceDir = replaceBackslashes(path.dirname(file))
+    }
+    if (true) {
+      jsonData.baseName = path.basename(file, EXTENSIONS.MD)
+    }
+    if(true) {
+      jsonData.bodyHtml = jsonData.bodyHtml.replace(/src="(?!https{0,1}:\/\/)/g, 'src="' + jsonData.sourceDir + '/')
+    }
+////////////////////////////////    
+
     // Rename to the new file.
     const baseFilename = file.replace(options._commonDir, '')
     const parsedPath = path.parse(path.join(options.outputDir, baseFilename))
